@@ -4,7 +4,16 @@
  * Implementation of hook_init().
  */
 function trip_utils_init() {
-  
+
+  $element = array(
+      '#tag' => 'meta', 
+      '#attributes' => array(
+        'name' => 'viewport', 
+        'content' => 'width=device-width; initial-scale=1.0; maximum-scale=1.0',
+      ),
+    );
+    drupal_add_html_head($element, 'trip_utils_viewport');
+     
   drupal_add_js(drupal_get_path('module', 'trip_utils') . '/trip_utils.js');
 
 }
