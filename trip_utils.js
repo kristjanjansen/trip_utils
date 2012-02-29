@@ -2,7 +2,23 @@
 
 Drupal.behaviors.test = {
   attach: function (context, settings) {
-  
+
+    function checkWindowSize() {
+       var pageWidth = $(window).width();  
+       if ( pageWidth <= 480 ) {
+       }
+       console.log(pageWidth);
+    }
+
+        checkWindowSize();
+        var id;
+        $(window).resize(function() {
+            clearTimeout(id);
+            id = setTimeout(checkWindowSize, 500);
+
+        });  
+    
+    
   $('.logged-in .view-test tr').each(function() {
   
     var nid = $(this).find('td.views-field-nid');
