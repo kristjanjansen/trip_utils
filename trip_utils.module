@@ -6,5 +6,6 @@
 function trip_utils_init() {
   
   drupal_add_js(drupal_get_path('module', 'trip_utils') . '/trip_utils.js');
+  drupal_add_css(drupal_get_path('module', 'trip_utils') . '/trip_utils.css');
 
 }

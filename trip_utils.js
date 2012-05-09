@@ -3,7 +3,7 @@
 Drupal.behaviors.test = {
   attach: function (context, settings) {
 
-   $('.logged-in .view-test tr').each(function() {
+   $('.logged-in .view-trip-test tr').each(function() {
   
     var nid = $(this).find('td.views-field-nid');
   
