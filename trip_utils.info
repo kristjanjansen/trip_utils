@@ -1,2 +1,7 @@
 name = Trip Utils
 core = 7.x
+
+dependencies[] = views_ui
+dependencies[] = views_json
+dependencies[] = bulk_export
+dependencies[] = trip_views
