@@ -3,5 +3,6 @@ core = 7.x
 
 dependencies[] = views_ui
 dependencies[] = views_json
+dependencies[] = views_litepager
 dependencies[] = bulk_export
 dependencies[] = trip_views
