@@ -3,25 +3,29 @@
 Drupal.behaviors.test = {
   attach: function (context, settings) {
 
-   $('.logged-in .view-trip-test tr').each(function() {
-  
-    var nid = $(this).find('td.views-field-nid');
-  
-    $.ajaxSetup({ cache: false });
-   
-    $.getJSON(Drupal.settings.basePath + 'json/' + nid.html(), {
+   var page = getURLParameter('page');
+
+    $.getJSON(Drupal.settings.basePath + 'json/?page=' + page, {
       },
       function (data, textStatus) {
-      //  console.log(data);
-        nid.parent().find('td.views-field-nothing').html(data.nodes[0].node.new_comments);
+        var len = data.nodes.length;
+        for (var i = 0; i < len; i++) {
+          var str = data.nodes[i].node.new_comments;
+          // console.log(str);
+          $('.logged-in .view-trip-test td.views-field-nothing:eq(' + i + ')')
+            .html(str);
+        }
       }
-    );
-  
-  });
-
-
+      );
 
   }
-};
+  };
+  
+  })(jQuery);
+        
 
-})(jQuery);
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
