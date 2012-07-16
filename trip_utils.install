@@ -1,6 +1,18 @@
 <?php
 
+function trip_utils_install() {
+  $field = array(
+    'description' => 'The Unix timestamp when the node was changed or commented.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+    'default' => 0,
+  );
+  
+  db_add_field('node', 'trip_last_comment', $field);
+}
 
+/*
 function trip_utils_schema() {
 
   $schema['trip_utils_touch'] = array(
@@ -36,3 +48,4 @@ function trip_utils_schema() {
   return $schema;
   
 }
+*/
