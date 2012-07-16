@@ -22,7 +22,7 @@ function trip_utils_node_insert($node, $arg = 0) {
   db_merge('trip_utils_touch')
     ->key(array('nid' => $node->nid))
     ->fields(array(
-       'touch' => $node->changed,
+       'touch' => $node->created,
      ))
     ->execute();
 }
