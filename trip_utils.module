@@ -1,5 +1,13 @@
 <?php
 
+
+function trip_utils_views_api() {
+  return array(
+    'api' => 3, 
+    'template path' => drupal_get_path('module', 'trip_utils')
+  );
+}
+
 /**
  * Implementation of hook_init().
  */
@@ -8,4 +16,34 @@ function trip_utils_init() {
   drupal_add_js(drupal_get_path('module', 'trip_utils') . '/trip_utils.js');
   drupal_add_css(drupal_get_path('module', 'trip_utils') . '/trip_utils.css');
 
+}
+
+function trip_utils_node_insert($node, $arg = 0) {
+  db_merge('trip_utils_touch')
+    ->key(array('nid' => $node->nid))
+    ->fields(array(
+       'touch' => $node->changed,
+     ))
+    ->execute();
+}
+
+function trip_utils_node_delete($node, $arg = 0) {
+  db_delete('trip_utils_touch')
+    ->condition('nid', $node->nid)
+    ->execute();
+}
+
+function trip_utils_comment_insert($comment) {
+  db_merge('trip_utils_touch')
+  ->key(array('nid' => $comment->nid))
+  ->fields(array(
+     'touch' => $comment->changed,
+   ))
+  ->execute();
+}
+
+function trip_utils_comment_delete($comment) {
+  db_delete('trip_utils_touch')
+    ->condition('nid', $comment->nid)
+    ->execute();
 }

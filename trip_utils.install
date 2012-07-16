@@ -1,0 +1,38 @@
+<?php
+
+
+function trip_utils_schema() {
+
+  $schema['trip_utils_touch'] = array(
+  'description' => 'Tracks when nodes were touched (changed or commented).',
+  'fields' => array(
+    'nid' => array(
+      'description' => 'The {node}.nid',
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'default' => 0,
+    ),
+   'touch' => array(
+      'description' => 'The Unix timestamp when the node touched (changed or commented).',
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'default' => 0,
+    ),
+  ),
+  'indexes' => array(
+    'tracker' => array('touch'),
+  ),
+  'primary key' => array('nid'),
+  'foreign keys' => array(
+    'tracked_node' => array(
+      'table' => 'node',
+      'columns' => array('nid' => 'nid'),
+    ),
+  ),
+);
+  
+  return $schema;
+  
+}

@@ -1,13 +1,19 @@
 name = Trip Utils
 core = 7.x
 
-dependencies[] = boost
-dependencies[] = bulk_export
-dependencies[] = devel
-dependencies[] = entitycache
-dependencies[] = filecache
-dependencies[] = scriptjs
-dependencies[] = trip_views
-dependencies[] = views_json
-dependencies[] = views_litepager
-dependencies[] = views_ui
+;dependencies[] = boost
+;dependencies[] = bulk_export
+;dependencies[] = devel
+;dependencies[] = entitycache
+;dependencies[] = filecache
+;dependencies[] = scriptjs
+;dependencies[] = trip_views
+;dependencies[] = views_json
+;dependencies[] = views_litepager
+;dependencies[] = views_ui
+
+; Information added by drush on 2012-07-15
+version = "unknown"
+project = "trip_utils"
+datestamp = "1342361149"
+
