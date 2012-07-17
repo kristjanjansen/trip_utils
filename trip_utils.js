@@ -4,7 +4,11 @@ Drupal.behaviors.test = {
   attach: function (context, settings) {
 
    var page = getURLParameter('page');
-
+    
+    $.ajaxSetup({
+      cache: false
+    });
+    
     $.getJSON(Drupal.settings.basePath + 'json/?page=' + page, {
       },
       function (data, textStatus) {
