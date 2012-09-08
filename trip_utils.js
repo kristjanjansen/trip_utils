@@ -17,7 +17,7 @@ Drupal.behaviors.test = {
         for (var i = 0; i < len; i++) {
           var str = data.nodes[i].node.new_comments;
           // console.log(str);
-          $('.logged-in .view-forum td.views-field-nothing:eq(' + i + ')')
+          $('.logged-in .view-forums td.views-field-nothing:eq(' + i + ')')
             .html(str);
         }
       }
