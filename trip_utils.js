@@ -3,14 +3,15 @@
 Drupal.behaviors.test = {
   attach: function (context, settings) {
 
-   var type = getURLParameter('type');
    var page = getURLParameter('page');
     
     $.ajaxSetup({
       cache: false
     });
     
-    $.getJSON(Drupal.settings.basePath + 'json/?type=' + type + '&page=' + page, {
+    var path = location.pathname + '/json?page=' + page ;
+
+    $.getJSON(path, {
       },
       function (data, textStatus) {
         var len = data.nodes.length;
