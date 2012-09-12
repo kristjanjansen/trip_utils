@@ -1,5 +1,19 @@
 <?php
 
+function trip_utils_block_info() {
+  $blocks['form']['info'] = t('Add button');
+  return $blocks;
+}
+
+function trip_utils_block_view($delta = '') {
+  $type = arg(1);
+  $type_url = str_replace('_', '-', $type);
+  $link = l(t('Add') . ' ' . $type, 'node/add/' . $type_url, array('query' => drupal_get_destination()));
+  $block['content'] = theme('item_list', array('items' => array($link), 'attributes' => array('class' => array('action-links'))));
+    
+  return $block;
+}
+
 function trip_utils_node_view($node, $view_mode, $langcode) {
   unset($node->content['links']['comment']);
   return $node;
