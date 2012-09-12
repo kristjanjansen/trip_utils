@@ -41,30 +41,30 @@ function trip_utils_comment_insert($comment) {
   ->execute();
 }
 
-function _trip_utils_picture($user) {
+function _trip_utils_picture($uid) {
 
 $output = NULL;
 
-if ($url = $user->field_user_image[LANGUAGE_NONE][0]['uri']) {
-  $output = l(
-    theme('image_style', array(
-      'style_name' => 'user_tiny', 
-      'path' => $url
+  $user = user_load($uid);
+  $field = field_get_items('user', $user, 'field_user_image'); 
+  if ($field) {
+    $value = field_view_value('user', $user, 'field_user_image', $field[0], $display = array(
+      'settings' => array(
+        'image_style' => 'user_tiny'
       )
-    ),
-    'user/' . $user->uid,
-    array('html' => TRUE, 'attributes' => array('class' => array('user-picture')))
-  );
-}
-return $output;
+      )
+    );  
+    $output = render($value);
+  }
+  return $output;
 }
 
 function trip_utils_process_node(&$variables) {
   
+   
   $node = $variables['node'];
-  $user = user_load($node->uid);
-
-  $variables['user_picture'] =  _trip_utils_picture($user);
+   
+  $variables['user_picture'] =  _trip_utils_picture($node->uid);
 
   $variables['submitted'] =  t('!username on !datetime.',
     array(
@@ -79,9 +79,8 @@ function trip_utils_process_comment(&$variables) {
   $variables['title'] = NULL;
   
   $comment = $variables['comment'];
-  $user = user_load($comment->uid);
   
-  $variables['picture'] =  _trip_utils_picture($user);
+  $variables['picture'] =  _trip_utils_picture($comment->uid);
   
   $variables['submitted'] = t('!username on !datetime.',
     array(
