@@ -1,5 +1,9 @@
 <?php
 
+function trip_utils_node_view($node, $view_mode, $langcode) {
+  unset($node->content['links']['comment']);
+  return $node;
+}
 
 function trip_utils_views_api() {
   return array(
@@ -39,16 +43,19 @@ function trip_utils_comment_insert($comment) {
 
 function _trip_utils_picture($user) {
 
-$output = l(
-  theme('image_style', array(
-    'style_name' => 'user_tiny', 
-    'path' => $user->field_user_image[LANGUAGE_NONE][0]['uri']
-    )
-  ),
-  'user/' . $user->uid,
-  array('html' => TRUE, 'attributes' => array('class' => array('user-picture')))
-);
+$output = NULL;
 
+if ($url = $user->field_user_image[LANGUAGE_NONE][0]['uri']) {
+  $output = l(
+    theme('image_style', array(
+      'style_name' => 'user_tiny', 
+      'path' => $url
+      )
+    ),
+    'user/' . $user->uid,
+    array('html' => TRUE, 'attributes' => array('class' => array('user-picture')))
+  );
+}
 return $output;
 }
 
