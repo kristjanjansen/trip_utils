@@ -41,12 +41,33 @@ function trip_utils_comment_insert($comment) {
   ->execute();
 }
 
+function _trip_utils_picture($user) {
+
+$output = NULL;
+
+if ($url = $user->field_user_image[LANGUAGE_NONE][0]['uri']) {
+  $output = l(
+    theme('image_style', array(
+      'style_name' => 'user_tiny', 
+      'path' => $url
+      )
+    ),
+    'user/' . $user->uid,
+    array('html' => TRUE, 'attributes' => array('class' => array('user-picture')))
+  );
+}
+return $output;
+}
+
 
 function trip_utils_process_node(&$variables) {
   
-   
   $node = $variables['node'];
-   
+
+  $user = user_load($node->uid);
+
+  $variables['user_picture'] =  _trip_utils_picture($user);
+
   $variables['submitted'] =  t('!username on !datetime.',
     array(
     '!username' => theme('username', array('account' => $node)),
@@ -60,7 +81,11 @@ function trip_utils_process_comment(&$variables) {
   $variables['title'] = NULL;
   
   $comment = $variables['comment'];
-   
+
+  $user = user_load($comment->uid);
+  
+  $variables['picture'] =  _trip_utils_picture($user);
+  
   $variables['submitted'] = t('!username on !datetime.',
     array(
     '!username' => theme('username', array('account' => $comment)),
