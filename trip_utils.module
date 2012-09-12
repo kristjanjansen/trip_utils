@@ -37,3 +37,49 @@ function trip_utils_comment_insert($comment) {
   ->execute();
 }
 
+function _trip_utils_picture($user) {
+
+$output = l(
+  theme('image_style', array(
+    'style_name' => 'user_tiny', 
+    'path' => $user->field_user_image[LANGUAGE_NONE][0]['uri']
+    )
+  ),
+  'user/' . $user->uid,
+  array('html' => TRUE, 'attributes' => array('class' => array('user-picture')))
+);
+
+return $output;
+}
+
+function trip_utils_process_node(&$variables) {
+  
+  $node = $variables['node'];
+  $user = user_load($node->uid);
+
+  $variables['user_picture'] =  _trip_utils_picture($user);
+
+  $variables['submitted'] =  t('!username on !datetime.',
+    array(
+    '!username' => theme('username', array('account' => $node)),
+    '!datetime' => format_date($node->changed, 'custom', 'j. M Y H:i'),
+  ));
+
+}
+
+function trip_utils_process_comment(&$variables) {
+  
+  $variables['title'] = NULL;
+  
+  $comment = $variables['comment'];
+  $user = user_load($comment->uid);
+  
+  $variables['picture'] =  _trip_utils_picture($user);
+  
+  $variables['submitted'] = t('!username on !datetime.',
+    array(
+    '!username' => theme('username', array('account' => $comment)),
+    '!datetime' => l(format_date($comment->changed, 'custom', 'j. M Y H:i'), 'node/' . $comment->nid, array('fragment' => 'comment-' . $comment->cid)),
+  ));
+
+}
