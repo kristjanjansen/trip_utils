@@ -57,7 +57,7 @@ function trip_utils_comment_insert($comment) {
   ->execute();
 }
 
-function _trip_utils_picture($uid, $style = 'user_tiny', $default = 'public://picture_none.png') {
+function _trip_utils_picture($uid, $style = 'user_tiny', $default = 'public://images_user/picture_none.png') {
 
   $user = user_load($uid);
 
