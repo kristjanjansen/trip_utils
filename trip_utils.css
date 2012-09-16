@@ -1,3 +1,28 @@
 .view-forums .views-field-nid {
 	display: none;
 }
+.views-field-comment-count {
+  text-align: center;
+  vertical-align: center;
+  font-size: 2.25em;
+  color: #ccc;
+  line-height: 1em;
+}
+.views-field-nothing {
+  padding-top: 1.5em;
+  width: 30px;
+}
+.views-field-nothing span {
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  background: #ffaa00;
+  color: white;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  width: 30px;
+  height: 30px;
+  line-height: 2em;
+  text-align:  center;
+}

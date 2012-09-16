@@ -33,7 +33,9 @@ function trip_utils_views_api() {
  */
 function trip_utils_init() {
   
-  drupal_add_js(drupal_get_path('module', 'trip_utils') . '/trip_utils.js');
+  if (user_is_logged_in()) {
+    drupal_add_js(drupal_get_path('module', 'trip_utils') . '/trip_utils.js');
+  }
   drupal_add_css(drupal_get_path('module', 'trip_utils') . '/trip_utils.css');
 
 }
