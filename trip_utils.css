@@ -1,28 +1,93 @@
+.region-header .block-menu li {
+  display: inline;
+}
+.block-menu ul li.leaf {
+ list-style: none;
+}
+.view .item-list ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 10px 10px 0;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+}
+.view-images .view-content .item-list ul li {
+  width: 165px;
+  height: 220px;
+}
+.comment {
+  border-top: 1px solid #eee;
+  padding-top: 1em;
+}
+.comment h3 {
+  display: none;
+}
+.user-picture {
+  margin-right: 5px;
+}
+.user-picture, .submitted {
+  display: inline-block;
+  vertical-align: middle;
+}
+#comments h2.title {
+  display: none;
+}
+#comments h2.comment-form {
+  display: block;
+}
+.submitted a {
+  color: gray;
+  text-decoration: underline;
+}
+.comment-unpublished {
+  background: none;
+  opacity: 0.5;
+}
+
+
 .view-forums .views-field-nid {
 	display: none;
 }
 .views-field-comment-count {
   text-align: center;
   vertical-align: center;
-  font-size: 2.25em;
+  font-size: 2em;
   color: #ccc;
   line-height: 1em;
 }
-.views-field-nothing {
-  padding-top: 1.5em;
+
+
+.not-logged-in .views-field-nothing {
+  display: none;
+}
+.logged-in .views-field-nothing {
+  padding-top: 1.25em;
   width: 30px;
 }
-.views-field-nothing span {
+.views-field-nothing a:link {
   font-weight: bold;
+  font-size: 14px;
   display: inline-block;
-  font-size: 16px;
   background: #ffaa00;
   color: white;
+  border-radius: 14px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  width: 28px;
+  height: 28px;
+  line-height: 2em;
+  text-align: center;
+}
+.new {
+  display: block-inline;
+  color: white;
+  background: #ffaa00;
+  padding: 0.2em 0.5em;
   border-radius: 15px;
   -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  width: 30px;
-  height: 30px;
-  line-height: 2em;
-  text-align:  center;
+  -webkit-border-radius: 15px; 
+}
+.node .content, .comment .content {
+  margin-top: .5em;
 }

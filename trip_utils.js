@@ -17,8 +17,8 @@ Drupal.behaviors.test = {
         var len = data.nodes.length;
         for (var i = 0; i < len; i++) {
           if (data.nodes[i].node.new_comments > 0) {
-          var str = '<span>'+ data.nodes[i].node.new_comments + '</span>';
-          // console.log(str);
+          //  console.log(data.nodes[i].node);
+          var str = '<a href="' + Drupal.settings.basePath + 'node/' + data.nodes[i].node.nid + '#new">'+ data.nodes[i].node.new_comments + '</a>';
           $('.logged-in .view-forums td.views-field-nothing:eq(' + i + ')')
             .html(str);
           }
