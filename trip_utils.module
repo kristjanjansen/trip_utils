@@ -63,7 +63,7 @@ function _trip_utils_picture($uid, $style = 'user_tiny', $default = 'public://im
 
   $user = user_load($uid);
 
-  $path = $user->field_user_image[LANGUAGE_NONE][0]['uri'] ? $user->field_user_image[LANGUAGE_NONE][0]['uri'] : $default;
+  $path = $user->field_user_image ? $user->field_user_image[LANGUAGE_NONE][0]['uri'] : $default;
   
   $output = l(theme('image_style', array(
         'path' => $path, 
