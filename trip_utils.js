@@ -19,8 +19,8 @@ Drupal.behaviors.test = {
           if (data.nodes[i].node.new_comments > 0) {
           //  console.log(data.nodes[i].node);
           var str = '<a href="' + Drupal.settings.basePath + 'node/' + data.nodes[i].node.nid + '#new">'+ data.nodes[i].node.new_comments + '</a>';
-          $('.logged-in .view-forums td.views-field-nothing:eq(' + i + ')')
-            .html(str);
+          $('.logged-in .view-forums td.views-field-nothing:eq(' + i + ') span')
+            .hide().html(str).fadeIn('500');
           }
         }
       }
