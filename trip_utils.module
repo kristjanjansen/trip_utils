@@ -47,8 +47,9 @@ function trip_utils_init() {
 }
   
 function trip_utils_js_alter(&$js) {
-  if (user_is_logged_in()) {  
-    $view = views_get_page_view();
+  $view = views_get_page_view();
+
+  if ($view && user_is_logged_in()) {  
     $js['settings']['data'][count($js['settings']['data'])]['trip_utils']['args'] =  $view->args[0];
   }
 }
