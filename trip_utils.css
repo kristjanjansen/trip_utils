@@ -1,3 +1,14 @@
+/* @TODO convert these to form_alter */
+
+.text-format-wrapper .filter-wrapper, 
+.grippie, 
+.field-edit-link,
+.comment-form .form-item-subject,
+.comment-form #edit-author--2,
+.text-summary-wrapper {
+  display: none;
+}
+
 .region-header .block-menu li {
   display: inline;
 }
