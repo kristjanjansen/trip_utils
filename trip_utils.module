@@ -38,16 +38,19 @@ function trip_utils_views_api() {
   );
 }
 
-/**
- * Implementation of hook_init().
- */
-function trip_utils_init() {   
-  
-  if (user_is_logged_in()) {
+
+function trip_utils_init() {     
+  if (user_is_logged_in()) {    
     drupal_add_js(drupal_get_path('module', 'trip_utils') . '/trip_utils.js');
   }
   drupal_add_css(drupal_get_path('module', 'trip_utils') . '/trip_utils.css');
-
+}
+  
+function trip_utils_js_alter(&$js) {
+  if (user_is_logged_in()) {  
+    $view = views_get_page_view();
+    $js['settings']['data'][count($js['settings']['data'])]['trip_utils']['args'] =  $view->args[0];
+  }
 }
 
 function trip_utils_node_insert($node, $arg = 0) {
