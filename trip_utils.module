@@ -8,12 +8,6 @@ function trip_utils_block_info() {
 
 function trip_utils_block_view($delta = '') {
   
-  /*
-  $contexts = context_active_contexts();
-  $keys = array_keys($contexts['test']->conditions['views']['values']);
-  $view_keys = explode(':', $keys[0]);
-  */
-  
   $block = NULL;
 
   $view = views_get_page_view();
