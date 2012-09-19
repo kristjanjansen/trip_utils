@@ -90,6 +90,10 @@
   line-height: 2em;
   text-align: center;
 }
+.views-field-nothing a:visited {
+  color: white;
+  background: white;
+}
 .new {
   display: block-inline;
   color: white;
