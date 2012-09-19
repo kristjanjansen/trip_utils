@@ -8,8 +8,9 @@ Drupal.behaviors.test = {
     $.ajaxSetup({
       cache: false
     });
-    
-    var path = Drupal.settings.basePath + 'forum/' + Drupal.settings.trip_utils.args + '/json?page=' + page;
+ 
+    if (Drupal.settings.trip_utils.args) {
+      var path = Drupal.settings.basePath + 'forum/' + Drupal.settings.trip_utils.args + '/json?page=' + page;
 
     $.getJSON(path, {
       },
@@ -25,7 +26,8 @@ Drupal.behaviors.test = {
         }
       }
       );
-
+    };
+  
   }
   };
   

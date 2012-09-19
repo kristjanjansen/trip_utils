@@ -49,7 +49,7 @@ function trip_utils_init() {
 function trip_utils_js_alter(&$js) {
   $view = views_get_page_view();
     if ($view) {
-    if (count($view->args) > 0 && user_is_logged_in()) {  
+    if ((count($view->args) > 0) && user_is_logged_in()) {  
       $js['settings']['data'][count($js['settings']['data'])]['trip_utils']['args'] =  $view->args[0];
     }
   }
