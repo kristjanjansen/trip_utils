@@ -9,7 +9,7 @@ Drupal.behaviors.test = {
       cache: false
     });
  
-    if (Drupal.settings.trip_utils.args) {
+    if (Drupal.settings.trip_utils) {
       var path = Drupal.settings.basePath + 'forum/' + Drupal.settings.trip_utils.args + '/json?page=' + page;
 
     $.getJSON(path, {
