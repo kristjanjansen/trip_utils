@@ -1,6 +1,12 @@
 <?php
 
 
+function trip_utils_preprocess_comment(&$var) {
+  $node = $var['node'];
+  $comment = $var['comment'];
+  $var['new'] = node_mark($node->nid, $comment->created) ? t('New') : ''; 
+}
+
 function trip_utils_block_info() {
   $blocks['form']['info'] = t('Add button');
   return $blocks;
